@@ -2,7 +2,14 @@ import * as d3 from "d3";
 import classNames from "classnames";
 
 const drawLine = (config) => {
-  const { svgRef, xScale, yScale, data, strokeWidth, lineClassName } = config;
+  const {
+    svgRef,
+    xScale,
+    yScale,
+    data,
+    line: { strokeWidth },
+    lineClassName,
+  } = config;
 
   const svg = d3.select(svgRef.current).select("g");
 

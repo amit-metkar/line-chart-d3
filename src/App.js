@@ -9,13 +9,15 @@ function App() {
       <LineChart
         chartConfig={{
           title: "Percent Value vs Category",
+          line: {
+            strokeWidth: 3,
+          },
         }}
         axisConfig={{
           xLabel: "Category",
           yLabel: "% Value",
         }}
         data={data}
-        strokeWidth={4}
       />
     </div>
   );
