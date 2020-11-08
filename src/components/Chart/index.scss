@@ -1,0 +1,66 @@
+.chart {
+  &.container {
+    position: relative;
+    width: fit-content;
+    margin: 20px;
+  }
+
+  & .chart-container {
+    cursor: pointer;
+  }
+
+  & .grid {
+    color: #c9c9c9;
+  }
+
+  & .axis {
+    color: #878d90;
+    stroke-width: 2;
+
+    & .domain {
+      display: none;
+    }
+
+    & .tick {
+      & line {
+        display: none;
+      }
+    }
+
+    &-label {
+      stroke: #45b3e7;
+      font-size: 14px;
+    }
+  }
+
+  & .tooltip {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+    border-radius: 2px;
+    width: fit-content;
+    padding: 10px;
+    opacity: 0;
+  }
+}
+
+.line-chart {
+  &.path {
+    stroke: #45b3e7;
+  }
+  &.circle {
+    fill: #6f6f6f;
+  }
+  &.cross {
+    stroke: #6f6f6f;
+  }
+}
+
+.chart-title {
+  font-size: 20px;
+  stroke: #45b3e7;
+  text-anchor: middle;
+}
