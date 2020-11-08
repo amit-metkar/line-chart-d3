@@ -46,15 +46,22 @@ function drawTooltip(config) {
     .on("mousemove", mousemove);
 
   function mousemove(event) {
-    const bisect = d3.bisector((d) => d.category).left;
+    // const bisect = d3.bisector((d) => d.category).left;
+    const bisect = d3.bisector((d) => d.category).center;
     const xPos = d3.pointer(event)[0];
     const invertedPoint = xScale.invert(xPos);
     const x0 = bisect(data, invertedPoint);
+
+    // const dPrev = data[x0 - 1];
+    // const dNext = data[x0];
+    // const d0 = invertedPoint - dPrev.category > dNext.category - invertedPoint ? dNext : dPrev;
     const d0 = data[x0];
 
     focus.style("opacity", 1);
     hLine.style("opacity", 1);
     vLine.style("opacity", 1);
+
+    // console.log(`${xScale(d0.category)}, ${yScale(d0.value)})`);
 
     focus.attr("transform", `translate(${xScale(d0.category)},${yScale(d0.value)})`);
     hLine.attr("transform", `translate(0,${yScale(d0.value)})`);

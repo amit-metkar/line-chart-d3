@@ -1,4 +1,4 @@
-import { groupBy } from "lodash-es";
+import groupBy from "lodash-es/groupBy";
 
 const data = [
   { user: "SO6lM", value: 5, category: 5 },
@@ -24,7 +24,8 @@ for (const key in groupedData) {
     const list = groupedData[key];
     updatedData.push({
       user: list.map((l) => l.user).join(", "),
-      value: list.map((l) => l.value).reduce((l1, l2) => l1 + l2, 0) / list.length,
+      // value: list.map((l) => l.value).reduce((l1, l2) => l1 + l2, 0) / list.length,
+      value: list.map((l) => l.value).reduce((l1, l2) => l1 + l2, 0),
       category: list[0].category,
     });
   }
