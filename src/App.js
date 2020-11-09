@@ -11,6 +11,7 @@ function App() {
           title: "Percent Value vs Category",
           line: {
             strokeWidth: 3,
+            animationDuration: 1500,
           },
         }}
         axisConfig={{

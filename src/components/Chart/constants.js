@@ -4,6 +4,7 @@ export const defaultChartConfig = {
   height: 300,
   line: {
     strokeWidth: 4,
+    animationDuration: 2000,
   },
 };
 

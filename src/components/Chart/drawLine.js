@@ -7,7 +7,7 @@ const drawLine = (config) => {
     xScale,
     yScale,
     data,
-    line: { strokeWidth },
+    line: { strokeWidth, animationDuration },
     lineClassName,
   } = config;
 
@@ -29,7 +29,7 @@ const drawLine = (config) => {
     .attr("class", classNames(["line-chart path", lineClassName]));
 
   const pathLength = path.node().getTotalLength();
-  const transitionPath = d3.transition().ease(d3.easeSin).duration(2500);
+  const transitionPath = d3.transition().ease(d3.easeSin).duration(animationDuration);
   path.attr("stroke-dashoffset", pathLength).attr("stroke-dasharray", pathLength).transition(transitionPath).attr("stroke-dashoffset", 0);
 };
 
