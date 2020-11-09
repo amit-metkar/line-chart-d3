@@ -19,7 +19,7 @@ const drawLine = (config) => {
     .y((d) => yScale(d.value));
   // .curve(d3.curveMonotoneX);
 
-  svg
+  const path = svg
     .append("path")
     .datum(data)
     .attr("fill", "none")
@@ -27,6 +27,10 @@ const drawLine = (config) => {
     .attr("class", "line")
     .attr("d", line)
     .attr("class", classNames(["line-chart path", lineClassName]));
+
+  const pathLength = path.node().getTotalLength();
+  const transitionPath = d3.transition().ease(d3.easeSin).duration(2500);
+  path.attr("stroke-dashoffset", pathLength).attr("stroke-dasharray", pathLength).transition(transitionPath).attr("stroke-dashoffset", 0);
 };
 
 export default drawLine;
