@@ -8,7 +8,7 @@ import drawTooltip from "../../common/tooltip";
 import drawLine from "./drawLine";
 import "./index.scss";
 import merge from "lodash-es/merge";
-import { defaultAxisConfig, defaultChartConfig, defaultTooltipConfig } from "./constants";
+import { defaultAxisConfig, defaultChartConfig, defaultTooltipConfig, miniChartHeight } from "./constants";
 
 const Chart = (props) => {
   const svgRef = React.createRef();
@@ -46,7 +46,7 @@ const Chart = (props) => {
     const svg = d3
       .select(svgRef.current)
       .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom);
+      .attr("height", height + margin.top + margin.bottom + miniChartHeight);
 
     svg
       .append("text")
@@ -55,7 +55,7 @@ const Chart = (props) => {
       .attr("y", margin.top / 2)
       .text(title);
 
-    svg.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
+    svg.append("g").attr("class", "chart").attr("transform", `translate(${margin.left},${margin.top})`);
 
     drawAxis({
       ..._axisConfig,

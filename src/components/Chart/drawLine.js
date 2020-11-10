@@ -7,26 +7,25 @@ const drawLine = (config) => {
     xScale,
     yScale,
     data,
-    line: { strokeWidth, animationDuration },
-    lineClassName,
+    line: { strokeWidth, animationDuration, className },
+    selector = "g.chart",
   } = config;
 
-  const svg = d3.select(svgRef.current).select("g");
+  const chartGrp = d3.select(svgRef.current).select(selector);
 
   const line = d3
     .line()
     .x((d) => xScale(d.category))
     .y((d) => yScale(d.value));
-  // .curve(d3.curveMonotoneX);
 
-  const path = svg
+  const path = chartGrp
     .append("path")
     .datum(data)
     .attr("fill", "none")
     .attr("stroke-width", strokeWidth)
     .attr("class", "line")
     .attr("d", line)
-    .attr("class", classNames(["line-chart path", lineClassName]));
+    .attr("class", classNames([className, "path"]));
 
   const pathLength = path.node().getTotalLength();
   const transitionPath = d3.transition().ease(d3.easeSin).duration(animationDuration);

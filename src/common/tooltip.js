@@ -4,7 +4,7 @@ import classnames from "classnames";
 function drawTooltip(config) {
   const { margin, width, height, data, svgRef, tooltipRef, markerClass, xScale, yScale } = config;
 
-  const svg = d3.select(svgRef.current).select("g");
+  const svg = d3.select(svgRef.current).select("g.chart");
   const tooltip = d3.select(tooltipRef.current);
 
   const focus = svg.append("g").attr("class", "focus").style("display", "none");

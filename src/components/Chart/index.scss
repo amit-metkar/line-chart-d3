@@ -59,6 +59,12 @@
   }
 }
 
+.mini-chart {
+  &.path {
+    stroke: #89c8e6;
+  }
+}
+
 .chart-title {
   font-size: 20px;
   stroke: #45b3e7;

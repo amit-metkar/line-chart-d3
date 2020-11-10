@@ -9,6 +9,7 @@ function App() {
       <LineChart
         chartConfig={{
           title: "Percent Value vs Category",
+          height: 300,
           line: {
             strokeWidth: 3,
             animationDuration: 1500,

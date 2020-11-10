@@ -5,6 +5,7 @@ export const defaultChartConfig = {
   line: {
     strokeWidth: 4,
     animationDuration: 2000,
+    className: "line-chart",
   },
 };
 
@@ -14,3 +15,5 @@ export const defaultAxisConfig = {
 };
 
 export const defaultTooltipConfig = {};
+
+export const miniChartHeight = 30;
