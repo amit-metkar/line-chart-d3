@@ -1,7 +1,8 @@
 import * as d3 from "d3";
 import classnames from "classnames";
-import drawLine from "../components/Chart/drawLine";
 import { miniChartHeight } from "../components/Chart/constants";
+// import drawLine from "../components/Chart/drawLine";
+// import { miniChartHeight } from "../components/Chart/constants";
 
 function drawAxis(config) {
   const { margin, width, height, data, drawXGridLines = true, drawYGridLines = false, xLabel, yLabel, axisClass, gridClass, svgRef, xScale, yScale, line } = config;
@@ -38,7 +39,8 @@ function drawAxis(config) {
       .attr("class", "axis-label axis-label-x")
       .attr("text-anchor", "middle")
       .attr("x", width / 2)
-      .attr("y", height + margin.top / 2 + miniChartHeight)
+      .attr("y", height + margin.top / 2 + miniChartHeight + 5)
+      // .attr("y", height + margin.top / 2)
       .text(xLabel);
 
   if (yLabel)
@@ -51,27 +53,27 @@ function drawAxis(config) {
       .attr("transform", "rotate(-90)")
       .text(yLabel);
 
-  xa.append("g").attr("transform", `translate(0, ${miniChartHeight})`).attr("class", "mini-chart");
+  // xa.append("g").attr("transform", `translate(0, ${miniChartHeight})`).attr("class", "mini-chart");
 
-  const yMinValue = d3.min(data, (d) => d.value);
-  const yMaxValue = d3.max(data, (d) => d.value);
-  let _yScale = d3
-    .scaleLinear()
-    .range([miniChartHeight - 15, 0])
-    .domain([yMinValue, yMaxValue]);
+  // const yMinValue = d3.min(data, (d) => d.value);
+  // const yMaxValue = d3.max(data, (d) => d.value);
+  // let _yScale = d3
+  //   .scaleLinear()
+  //   .range([miniChartHeight - 15, 0])
+  //   .domain([yMinValue, yMaxValue]);
 
-  drawLine({
-    svgRef,
-    data,
-    xScale,
-    yScale: _yScale,
-    line: {
-      ...line,
-      strokeWidth: 2,
-      className: "mini-chart",
-    },
-    selector: "g.mini-chart",
-  });
+  // drawLine({
+  //   svgRef,
+  //   data,
+  //   xScale,
+  //   yScale: _yScale,
+  //   line: {
+  //     ...line,
+  //     strokeWidth: 2,
+  //     className: "mini-chart",
+  //   },
+  //   selector: "g.mini-chart",
+  // });
 }
 
 export default drawAxis;

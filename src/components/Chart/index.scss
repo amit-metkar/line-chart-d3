@@ -70,3 +70,9 @@
   stroke: #45b3e7;
   text-anchor: middle;
 }
+
+.zoom {
+  cursor: move;
+  fill: none;
+  pointer-events: all;
+}

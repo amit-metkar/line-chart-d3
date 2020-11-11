@@ -10,8 +10,8 @@ export const defaultChartConfig = {
 };
 
 export const defaultAxisConfig = {
-  xLabel: "Category",
-  yLabel: "% Value",
+  xLabel: "",
+  yLabel: "",
 };
 
 export const defaultTooltipConfig = {};

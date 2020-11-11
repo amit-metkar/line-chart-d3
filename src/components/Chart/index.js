@@ -9,6 +9,7 @@ import drawLine from "./drawLine";
 import "./index.scss";
 import merge from "lodash-es/merge";
 import { defaultAxisConfig, defaultChartConfig, defaultTooltipConfig, miniChartHeight } from "./constants";
+import drawZoom from "../../common/zoom";
 
 const Chart = (props) => {
   const svgRef = React.createRef();
@@ -55,8 +56,8 @@ const Chart = (props) => {
       .attr("y", margin.top / 2)
       .text(title);
 
-    svg.append("g").attr("class", "chart").attr("transform", `translate(${margin.left},${margin.top})`);
-
+    const chartGrp = svg.append("g").attr("class", "chart").attr("transform", `translate(${margin.left},${margin.top})`);
+    chartGrp.append("defs").append("svg:clipPath").attr("id", "clip").append("svg:rect").attr("width", width).attr("height", height).attr("x", 0).attr("y", 0);
     drawAxis({
       ..._axisConfig,
       ..._chartConfig,
