@@ -22,15 +22,15 @@ const drawLine = (config) => {
 
   const brushed = (event) => {
     // console.log(event.sourceEvent && event.sourceEvent.type, event.type);
-    if (event.sourceEvent && event.sourceEvent.type === "mouseup") {
-      // debugger;
-      const s = event.selection || xScale2.range();
-      xScale.domain(s.map(xScale2.invert, xScale2));
+    // if (event.sourceEvent && event.sourceEvent.type === "mouseup") {
+    // debugger;
+    const s = event.selection || xScale2.range();
+    xScale.domain(s.map(xScale2.invert, xScale2));
 
-      chartGrp.select(".axis-x").call(d3.axisBottom(xScale));
-      lineChart.select(".line-chart").attr("d", line);
-      // console.log(xScale.range(), xScale.domain());
-    }
+    chartGrp.select(".axis-x").call(d3.axisBottom(xScale));
+    lineChart.select(".line-chart").attr("d", line);
+    // console.log(xScale.range(), xScale.domain());
+    // }
   };
 
   const brush = d3
