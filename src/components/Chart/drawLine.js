@@ -17,22 +17,20 @@ const drawLine = (config) => {
 
   const chartGrp = d3.select(svgRef.current).select(selector);
 
-  const xMinValue = d3.min(data, (d) => d.category);
-  const xMaxValue = d3.max(data, (d) => d.category);
-
-  let xScale2 = d3.scaleLinear().domain([xMinValue, xMaxValue]).range([0, width]);
-  let yScale2 = d3.scaleLinear().domain([0, 100]).range([miniChartHeight, 0]);
+  let xScale2 = d3.scaleLinear().domain(xScale.domain()).range(xScale.range());
+  let yScale2 = d3.scaleLinear().domain(yScale.domain()).range([miniChartHeight, 0]);
 
   const brushed = (event) => {
-    console.log(event.sourceEvent && event.sourceEvent.type, event.type);
-    // if ((event.sourceEvent && event.sourceEvent.type === "mouseup") || event.type === "brush") {
-    const s = event.selection || xScale2.range();
-    xScale.domain(s.map(xScale2.invert, xScale2));
+    // console.log(event.sourceEvent && event.sourceEvent.type, event.type);
+    if (event.sourceEvent && event.sourceEvent.type === "mouseup") {
+      // debugger;
+      const s = event.selection || xScale2.range();
+      xScale.domain(s.map(xScale2.invert, xScale2));
 
-    lineChart.select(".line-chart").attr("d", line);
-    chartGrp.select(".axis-x").call(d3.axisBottom(xScale));
-    // console.log(xScale.range(), xScale.domain());
-    // }
+      chartGrp.select(".axis-x").call(d3.axisBottom(xScale));
+      lineChart.select(".line-chart").attr("d", line);
+      // console.log(xScale.range(), xScale.domain());
+    }
   };
 
   const brush = d3
@@ -75,8 +73,8 @@ const drawLine = (config) => {
   const path2 = context.append("path").datum(data).attr("fill", "none").attr("stroke-width", 2).attr("class", "mini-chart path").attr("d", line2);
 
   const path2Length = path2.node().getTotalLength();
-  const transitionPath2 = d3.transition().ease(d3.easeSin).duration(animationDuration);
-  path2.attr("stroke-dashoffset", path2Length).attr("stroke-dasharray", path2Length).transition(transitionPath2).attr("stroke-dashoffset", 0);
+  // const transitionPath2 = d3.transition().ease(d3.easeSin).duration(animationDuration);
+  path2.attr("stroke-dashoffset", path2Length).attr("stroke-dasharray", path2Length).transition(transitionPath).attr("stroke-dashoffset", 0);
 
   context.append("g").attr("class", "brush").call(brush).call(brush.move, xScale.range());
 };

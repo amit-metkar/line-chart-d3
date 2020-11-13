@@ -23,9 +23,9 @@ const Chart = (props) => {
   const { tooltipClassName } = _tooltipConfig;
   const { margin, width, height, title, chartContainerClass } = _chartConfig;
 
-  console.log(margin, width, height, title, chartContainerClass, _axisConfig);
-  const yMinValue = d3.min(data, (d) => d.value);
-  const yMaxValue = d3.max(data, (d) => d.value);
+  // console.log(margin, width, height, title, chartContainerClass, _axisConfig);
+  // const yMinValue = d3.min(data, (d) => d.value);
+  // const yMaxValue = d3.max(data, (d) => d.value);
 
   const xMinValue = d3.min(data, (d) => d.category);
   const xMaxValue = d3.max(data, (d) => d.category);
